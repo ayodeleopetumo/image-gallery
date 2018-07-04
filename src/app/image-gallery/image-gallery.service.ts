@@ -1,7 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+
+import { Data } from './models/data.model';
+import { Image } from './models/image.interface';
 
 @Injectable()
 export class ImageGalleryService {
-  constructor(private http: Http) {}
+  data: any;
+  images: Image[];
+
+  constructor() {}
+
+  getInitialImages() {
+    this.data = Data;
+    return this.data;
+  }
+
+  getImages() {
+    return JSON.parse(localStorage.getItem('images'));
+  }
+
+  uploadImage(image) {
+    this.images = JSON.parse(localStorage.getItem('images'));
+    this.images.push(image);
+    localStorage.setItem('images', JSON.stringify(this.images));
+  }
+
+  deleteImage(image) {
+    this.images = JSON.parse(localStorage.getItem('images'));
+    this.images = this.images.filter(img => img !== image);
+    localStorage.setItem('images', JSON.stringify(this.images));
+  }
 }

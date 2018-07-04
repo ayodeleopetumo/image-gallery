@@ -1,0 +1,85 @@
+.image-viewer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 3px;
+    width: 60rem;
+    height: 40.625rem;
+    border-radius: 0.5rem;
+
+    img {
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 0.5rem;
+    }
+
+    em {
+      display: block;
+      font-style: italic;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  }
+
+  a:not(.delete-image) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #545e6f;
+    cursor: pointer;
+
+    &:nth-of-type(1) {
+      left: calc(50% - 32rem);
+    }
+
+    &:nth-of-type(2) {
+      left: auto;
+      right: calc(50% - 33rem);
+    }
+
+    .ng-fa-icon {
+      font-size: 2.1875rem;
+    }
+  }
+
+  .delete-image {
+    position: absolute;
+    right: -25px;
+    top: -25px;
+    color: #fff;
+    background: indianred;
+    padding: 10px 15.4px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    .ng-fa-icon {
+      font-size: 22px;
+    }
+  }
+}
+
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  z-index: 1;
+}

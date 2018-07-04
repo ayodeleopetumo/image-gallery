@@ -23,6 +23,7 @@ a {
   opacity: 0;
   transform: translateY(-20px);
   transition: 0.3s opacity ease-in-out, 0.3s transform ease-in-out;
+  z-index: -1;
 
   form {
     padding: 0;

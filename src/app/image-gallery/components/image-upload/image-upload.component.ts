@@ -17,7 +17,8 @@ import { Image } from '../../models/image.interface';
     <a title="Add image" (click)="toggleImageUpload()"><fa-icon [icon]="faPlus"></fa-icon></a>
     <div class="upload-form"
       [style.opacity]="(showForm ? '1' : '0')"
-      [style.transform]="(showForm ? 'translateY(0)' : 'translateY(-20px)')">
+      [style.transform]="(showForm ? 'translateY(0)' : 'translateY(-20px)')"
+      [style.z-index]="(showForm ? '1' : '-1')">
       <form (ngSubmit)="processUpload()">
         <input type='file' id="uploadBannerImage" (change)="previewImage(imageInput)" #imageInput required>
         <div class="image-preview" *ngIf="imagePresent">
@@ -35,8 +36,9 @@ export class ImageUploadComponent implements OnInit {
   imagePresent = false;
   showForm = false;
   imagePreview: string;
+  imageObj: Image;
 
-  @Output() imageUpload: EventEmitter<string> = new EventEmitter<string>();
+  @Output() imageUpload: EventEmitter<Image> = new EventEmitter<Image>();
   @ViewChild('imageInput') imageInput: ElementRef;
 
   constructor() {}
@@ -61,7 +63,21 @@ export class ImageUploadComponent implements OnInit {
   }
 
   processUpload() {
-    console.log();
+    if (this.imagePreview) {
+      const imageName = this.imageInput.nativeElement.value.replace(
+        /.*[\/\\]/,
+        ''
+      );
+      this.imageObj = {
+        url: this.imagePreview,
+        imageName: imageName.replace(/\.[^/.]+$/, ''),
+        dateCreated: new Date()
+      };
+
+      this.imageUpload.emit(this.imageObj);
+      alert('Image has been uploaded');
+      this.clearForm();
+    }
   }
 
   clearForm() {

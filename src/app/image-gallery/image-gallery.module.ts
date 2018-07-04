@@ -11,6 +11,8 @@ import { ImageListingComponent } from './components/image-listing/image-listing.
 import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 
+import { ImageGalleryService } from './image-gallery.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -26,6 +28,6 @@ import { ImageUploadComponent } from './components/image-upload/image-upload.com
     ImageViewerComponent,
     ImageUploadComponent
   ],
-  providers: []
+  providers: [ImageGalleryService]
 })
 export class ImageGalleryModule {}

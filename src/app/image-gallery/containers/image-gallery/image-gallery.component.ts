@@ -8,16 +8,7 @@ import { Image } from '../../models/image.interface';
 @Component({
   selector: 'app-image-gallery',
   styleUrls: ['image-gallery.component.scss'],
-  template: `
-    <div class="container">
-      <header>
-        <h3><fa-icon [icon]="faImages"></fa-icon> Image Gallery</h3>
-        <app-image-upload (imageUpload)="handleUpload($event)"></app-image-upload>
-      </header>
-      <app-image-listing [images]="images"></app-image-listing>
-      <app-pagination [imageList]="images"></app-pagination>
-    </div>
-  `
+  templateUrl: 'image-gallery.component.html'
 })
 export class ImageGalleryComponent implements OnInit {
   faImages = faImages;

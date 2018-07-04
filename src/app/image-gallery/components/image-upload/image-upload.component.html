@@ -1,0 +1,15 @@
+<a title="Add image" (click)="toggleImageUpload()">
+  <fa-icon [icon]="faPlus"></fa-icon>
+</a>
+
+<div class="upload-form" [class.show-form]="showForm">
+  <form (ngSubmit)="processUpload()">
+    <input type='file' id="uploadBannerImage" (change)="previewImage(imageInput)" #imageInput required>
+    <div class="image-preview" *ngIf="imagePresent">
+      <p>Preview:</p>
+      <img [src]="imagePreview" alt="" id="preview">
+    </div>
+    <button type="submit" [disabled]="!imagePresent">Upload Image</button>
+    <button type="cancel" (click)="clearForm()">Cancel</button>
+  </form>
+</div>

@@ -8,28 +8,13 @@ import {
 } from '@angular/core';
 
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
 import { Image } from '../../models/image.interface';
 
 @Component({
   selector: 'app-image-upload',
   styleUrls: ['image-upload.component.scss'],
-  template: `
-    <a title="Add image" (click)="toggleImageUpload()"><fa-icon [icon]="faPlus"></fa-icon></a>
-    <div class="upload-form"
-      [style.opacity]="(showForm ? '1' : '0')"
-      [style.transform]="(showForm ? 'translateY(0)' : 'translateY(-20px)')"
-      [style.z-index]="(showForm ? '1' : '-1')">
-      <form (ngSubmit)="processUpload()">
-        <input type='file' id="uploadBannerImage" (change)="previewImage(imageInput)" #imageInput required>
-        <div class="image-preview" *ngIf="imagePresent">
-          <p>Preview:</p>
-          <img [src]="imagePreview" alt="" id="preview">
-        </div>
-        <button type="submit" [disabled]="!imagePresent">Upload Image</button>
-        <button type="cancel" (click)="clearForm()">Cancel</button>
-      </form>
-    </div>
-  `
+  templateUrl: 'image-upload.component.html'
 })
 export class ImageUploadComponent implements OnInit {
   faPlus = faPlus;

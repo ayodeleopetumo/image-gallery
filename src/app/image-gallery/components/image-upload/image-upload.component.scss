@@ -25,6 +25,12 @@ a {
   transition: 0.3s opacity ease-in-out, 0.3s transform ease-in-out;
   z-index: -1;
 
+  &.show-form {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 1;
+  }
+
   form {
     padding: 0;
 

@@ -1,17 +1,20 @@
-<div class="image-viewer">
-  <a class="prev">
+<div class="image-viewer" [class.show-modal]="imageSelected">
+  <a class="prev" (click)="doNavigate('prev')" [class.disabled]="images.indexOf(imageSelected) === 0">
     <fa-icon [icon]="faAngleLeft"></fa-icon>
   </a>
 
   <div class="image-viewer__content">
-    <a class="delete-image">
+    <a class="delete-image" (click)="doRemove(imageSelected)">
       <fa-icon [icon]="faTrashAlt"></fa-icon>
     </a>
-    <img [src]="" [alt]="">
-    <em></em>
+    <img [src]="imageSelected?.url" [alt]="imageSelected?.imageName">
+    <div>
+      <em>Date created: {{ imageSelected?.dateCreated | date }}</em>
+      <a (click)="doClose()">Close</a>
+    </div>
   </div>
 
-  <a class="next">
+  <a class="next" (click)="doNavigate('next')" [class.disabled]="images.indexOf(imageSelected) === images.length - 1">
     <fa-icon [icon]="faAngleRight"></fa-icon>
   </a>
 </div>

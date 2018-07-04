@@ -35,6 +35,13 @@
       font-style: italic;
       font-size: 14px;
       margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    & > div {
+      a {
+        position: static;
+      }
     }
   }
 
@@ -45,6 +52,11 @@
     transform: translate(-50%, -50%);
     color: #545e6f;
     cursor: pointer;
+
+    &.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
 
     &:nth-of-type(1) {
       left: calc(50% - 32rem);

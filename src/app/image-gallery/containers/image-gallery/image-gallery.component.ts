@@ -13,6 +13,7 @@ import { Image } from '../../models/image.interface';
 export class ImageGalleryComponent implements OnInit {
   faImages = faImages;
   images: Image[];
+  selectedImage: Image;
 
   constructor(private imageGalleryService: ImageGalleryService) {}
 
@@ -29,5 +30,14 @@ export class ImageGalleryComponent implements OnInit {
   handleUpload(image) {
     this.imageGalleryService.uploadImage(image);
     this.images = this.imageGalleryService.getImages();
+  }
+
+  handleDelete(image) {
+    this.imageGalleryService.deleteImage(image);
+    this.images = this.imageGalleryService.getImages();
+  }
+
+  showImageViewer(image) {
+    this.selectedImage = image;
   }
 }

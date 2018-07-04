@@ -27,7 +27,7 @@ export class ImageGalleryService {
 
   deleteImage(image) {
     this.images = JSON.parse(localStorage.getItem('images'));
-    this.images = this.images.filter(img => img !== image);
+    this.images = this.images.filter(img => img.imageName !== image.imageName);
     localStorage.setItem('images', JSON.stringify(this.images));
   }
 }

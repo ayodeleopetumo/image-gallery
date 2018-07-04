@@ -1,7 +1,7 @@
 <section class="image-listings">
   <ul *ngIf="images?.length; else noImages">
     <li *ngFor="let image of images">
-      <a href="#">
+      <a (click)="setSelectedImage(image)">
         <img [src]="image.url" [alt]="image.imageName">
       </a>
     </li>
@@ -10,4 +10,3 @@
 <ng-template #noImages>
   <p>No images to display. Click the (+) button to add image</p>
 </ng-template>
-<app-image-viewer></app-image-viewer>

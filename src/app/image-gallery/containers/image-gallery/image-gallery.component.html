@@ -13,6 +13,6 @@
     <p>Total images: {{ total }}</p>
   </div>
 
-  <app-image-viewer *ngIf="imagePresent" [imageSelected]="selectedImage" [images]="images" (doDelete)="handleDelete($event)"
+  <app-image-viewer *ngIf="imagePresent" [imageSelected]="selectedImage" [images]="temp" (doDelete)="handleDelete($event)"
     (closeViewer)="handleClose($event)"></app-image-viewer>
 </div>

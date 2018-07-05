@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { faImages } from '@fortawesome/free-solid-svg-icons';
 import { ImageGalleryService } from '../../image-gallery.service';

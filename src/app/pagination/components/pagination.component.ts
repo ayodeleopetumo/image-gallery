@@ -15,6 +15,7 @@ export class PaginationComponent implements OnInit {
   @Output() goPrev: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() goNext: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() goPage: EventEmitter<number> = new EventEmitter<number>();
+  @Output() checkPages: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {}
 
@@ -33,33 +34,19 @@ export class PaginationComponent implements OnInit {
   }
 
   lastPage(): boolean {
-    return this.perPage * this.page > this.count;
+    return this.perPage * this.page >= this.count;
   }
 
   getPages(): number[] {
     const totalPages = Math.ceil(this.count / this.perPage);
-    const page = this.page || 1;
-    const pagesToShow = this.pagesToShow || 9;
     const pages: number[] = [];
-    const times = pagesToShow - 1;
 
-    pages.push(page);
-
-    for (let i = 0; i < times; i++) {
-      if (pages.length < pagesToShow) {
-        if (Math.min.apply(null, pages) > 1) {
-          pages.push(Math.min.apply(null, pages) - 1);
-        }
-      }
-      if (pages.length < pagesToShow) {
-        if (Math.max.apply(null, pages) < totalPages) {
-          pages.push(Math.max.apply(null, pages) + 1);
-        }
-      }
+    for (let i = 0; i < totalPages; i++) {
+      pages.push(i + 1);
     }
 
     pages.sort((a, b) => a - b);
-    console.log(pages);
+    this.checkPages.emit(pages);
     return pages;
   }
 }

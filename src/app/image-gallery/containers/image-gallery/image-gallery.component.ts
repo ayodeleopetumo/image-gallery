@@ -14,6 +14,7 @@ export class ImageGalleryComponent implements OnInit {
   faImages = faImages;
   images: Image[];
   selectedImage: Image;
+  imagePresent: boolean;
 
   constructor(private imageGalleryService: ImageGalleryService) {}
 
@@ -37,7 +38,12 @@ export class ImageGalleryComponent implements OnInit {
     this.images = this.imageGalleryService.getImages();
   }
 
+  handleClose(state) {
+    this.imagePresent = false;
+  }
+
   showImageViewer(image) {
     this.selectedImage = image;
+    this.imagePresent = true;
   }
 }

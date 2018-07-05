@@ -19,6 +19,7 @@ export class ImageViewerComponent implements OnInit {
   @Input() images: Image[];
   @Input() imageSelected: Image;
   @Output() doDelete: EventEmitter<Image> = new EventEmitter<Image>();
+  @Output() closeViewer: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() {}
 
@@ -45,6 +46,6 @@ export class ImageViewerComponent implements OnInit {
   }
 
   doClose() {
-    this.imageSelected = null;
+    this.closeViewer.emit(false);
   }
 }

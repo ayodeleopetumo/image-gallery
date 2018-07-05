@@ -6,5 +6,6 @@
   </header>
   <app-image-listing [images]="images" (showSelected)="showImageViewer($event)"></app-image-listing>
   <app-pagination [imageList]="images"></app-pagination>
-  <app-image-viewer [imageSelected]="selectedImage" [images]="images" (doDelete)="handleDelete($event)"></app-image-viewer>
+  <app-image-viewer *ngIf="imagePresent" [imageSelected]="selectedImage" [images]="images" (doDelete)="handleDelete($event)"
+    (closeViewer)="handleClose($event)"></app-image-viewer>
 </div>

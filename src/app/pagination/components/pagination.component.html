@@ -1,23 +1,15 @@
-<footer>
-  <nav class="pagination">
-    <ul class="pagination__list">
-      <li class="pagination__group">
-        <a href="#" class="pagination__item pagination__control pagination__control_prev">prev</a>
-      </li>
-      <li class="pagination__group">
-        <a href="#" class="pagination__item">1</a>
-      </li>
-      <li class="pagination__group">
-        <span class="pagination__item pagination__item_active">2</span>
-      </li>
-      <li class="pagination__group">
-        <a href="#" class="pagination__item">3</a>
-      </li>
-      <li class="pagination__group">
-        <a href="#" class="pagination__item pagination__control pagination__control_next">next</a>
-      </li>
-    </ul>
-  </nav>
+<nav class="pagination" *ngIf="count > 0">
+  <ul class="pagination__list">
+    <li class="pagination__group">
+      <a class="pagination__item pagination__control pagination__control_prev" (click)="onPrev()" [class.disabled]="page === 1">prev</a>
+    </li>
 
-  <p>Total images: {{ imageList? imageList.length : '0' }}</p>
-</footer>
+    <li class="pagination__group">
+      <a class="pagination__item" *ngFor="let pageNum of getPages()" (click)="onPage(pageNum)" [class.pagination__item_active]="pageNum === page">{{ pageNum }}</a>
+    </li>
+
+    <li class="pagination__group">
+      <a class="pagination__item pagination__control pagination__control_next" (click)="onNext(true)" [class.disabled]="lastPage()">next</a>
+    </li>
+  </ul>
+</nav>

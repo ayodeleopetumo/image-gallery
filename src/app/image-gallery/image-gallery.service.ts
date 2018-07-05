@@ -10,24 +10,27 @@ export class ImageGalleryService {
 
   constructor() {}
 
-  getInitialImages() {
-    this.data = Data;
-    return this.data;
+  getDefaultImages(): Image[] {
+    return (this.data = Data);
   }
 
-  getImages() {
-    return JSON.parse(localStorage.getItem('images'));
+  checkLocalStorage(): Image[] {
+    localStorage.getItem('images') !== null
+      ? (this.images = JSON.parse(localStorage.getItem('images')))
+      : (this.images = []);
+
+    return this.images;
   }
 
-  uploadImage(image) {
-    this.images = JSON.parse(localStorage.getItem('images'));
-    this.images.push(image);
-    localStorage.setItem('images', JSON.stringify(this.images));
+  uploadImage(image): void {
+    const imageStore = this.checkLocalStorage();
+    imageStore.push(image);
+    localStorage.setItem('images', JSON.stringify(imageStore));
   }
 
-  deleteImage(image) {
-    this.images = JSON.parse(localStorage.getItem('images'));
-    this.images = this.images.filter(img => img.imageName !== image.imageName);
-    localStorage.setItem('images', JSON.stringify(this.images));
+  deleteImage(image): void {
+    let imageStore = this.checkLocalStorage();
+    imageStore = imageStore.filter(img => img.imageName !== image.imageName);
+    localStorage.setItem('images', JSON.stringify(imageStore));
   }
 }

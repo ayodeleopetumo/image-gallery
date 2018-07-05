@@ -4,8 +4,15 @@
       <fa-icon [icon]="faImages"></fa-icon> Image Gallery</h3>
     <app-image-upload (imageUpload)="handleUpload($event)"></app-image-upload>
   </header>
+
   <app-image-listing [images]="images" (showSelected)="showImageViewer($event)"></app-image-listing>
-  <app-pagination [imageList]="images"></app-pagination>
+
+  <div class="pagination-section">
+    <app-pagination (goPage)="goToPage($event)" (goNext)="onNext()" (goPrev)="onPrev()" [page]="page" [perPage]="limit" [count]="total"></app-pagination>
+
+    <p>Total images: {{ total }}</p>
+  </div>
+
   <app-image-viewer *ngIf="imagePresent" [imageSelected]="selectedImage" [images]="images" (doDelete)="handleDelete($event)"
     (closeViewer)="handleClose($event)"></app-image-viewer>
 </div>

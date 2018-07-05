@@ -1,9 +1,3 @@
-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .pagination {
   font-size: 1.6rem;
 
@@ -28,7 +22,13 @@ footer {
 
   &__item {
     display: inline-block;
-    line-height: 1;
+    line-height: 0.9;
+    cursor: pointer;
+
+    &.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
   }
 
   &__control {
@@ -63,18 +63,16 @@ footer {
     right: 0;
   }
 
-  &__item_active {
-    padding: 0.5875em 0.8em;
-    margin-right: 0.5em;
-    margin-left: 0.5em;
-  }
-
   &__item {
     text-decoration: none;
     color: #455a64;
   }
 
   &__item_active {
+    padding: 0.5875em 0.7em;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+
     background-color: #9f72e6;
     border-radius: 50%;
     font-weight: 700;

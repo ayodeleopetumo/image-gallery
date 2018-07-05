@@ -14,3 +14,9 @@ header {
     margin: 0;
   }
 }
+
+.pagination-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

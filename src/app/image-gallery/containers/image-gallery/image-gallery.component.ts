@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { faImages } from '@fortawesome/free-solid-svg-icons';
 import { ImageGalleryService } from '../../image-gallery.service';
 
 import { Image } from '../../models/image.interface';
+import { PaginationComponent } from '../../../pagination/components/pagination.component';
 
 @Component({
   selector: 'app-image-gallery',
@@ -49,6 +50,10 @@ export class ImageGalleryComponent implements OnInit {
 
     this.images = this.temp.slice(start, end);
     this.total = this.temp.length;
+
+    if (!this.images.length && this.page !== 1) {
+      this.goToPage(this.page - 1);
+    }
   }
 
   goToPage(n: number): void {

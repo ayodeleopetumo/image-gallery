@@ -4,4 +4,4 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Demo
 
-[](https://ayodeleopetumo.github.io/image-gallery/image-gallery/)
+[Link](https://ayodeleopetumo.github.io/image-gallery/image-gallery/)

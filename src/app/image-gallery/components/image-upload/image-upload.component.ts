@@ -38,7 +38,7 @@ export class ImageUploadComponent implements OnInit {
     if (image.files && image.files[0]) {
       const reader = new FileReader();
       reader.readAsDataURL(image.files[0]);
-      reader.onload = e => {
+      reader.onload = (e: any) => {
         if (e.target.result) {
           this.imagePresent = true;
           this.imagePreview = e.target.result;
